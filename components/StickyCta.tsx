@@ -29,7 +29,7 @@ export function StickyCta() {
       </a>
       <a
         href="#kontakt"
-        className="flex flex-1 items-center justify-center bg-brick px-6 py-3.5 font-semibold text-white"
+        className="flex flex-1 items-center justify-center bg-brand px-6 py-3.5 font-semibold text-white"
       >
         Angebot anfragen
       </a>

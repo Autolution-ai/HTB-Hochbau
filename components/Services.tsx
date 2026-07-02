@@ -25,7 +25,7 @@ export function Services() {
                 id={service.lead ? undefined : undefined}
                 className={`group relative flex h-full flex-col overflow-hidden border ${
                   service.lead
-                    ? "border-brick bg-anthracite text-white"
+                    ? "border-brand bg-anthracite text-white"
                     : "border-line bg-white"
                 }`}
               >
@@ -38,7 +38,7 @@ export function Services() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   {service.lead && (
-                    <span className="absolute left-4 top-4 bg-brick px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                    <span className="absolute left-4 top-4 bg-brand px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
                       Hauptleistung
                     </span>
                   )}
@@ -61,7 +61,7 @@ export function Services() {
                   {service.lead && (
                     <a
                       href="#wanddurchbruch"
-                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brick"
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand"
                     >
                       So läuft ein Wanddurchbruch <ArrowUpRight size={16} />
                     </a>

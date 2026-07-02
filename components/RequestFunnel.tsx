@@ -84,7 +84,7 @@ export function RequestFunnel() {
   if (status === "done") {
     return (
       <div className="flex flex-col items-center justify-center bg-white p-10 text-center">
-        <span className="grid h-16 w-16 place-items-center rounded-full bg-brick">
+        <span className="grid h-16 w-16 place-items-center rounded-full bg-brand">
           <Check size={32} className="text-white" />
         </span>
         <h3 className="mt-6 font-display text-2xl font-bold text-anthracite">
@@ -106,7 +106,7 @@ export function RequestFunnel() {
           <div
             key={s}
             className={`h-1.5 flex-1 rounded-full transition-colors ${
-              s <= step ? "bg-brick" : "bg-line"
+              s <= step ? "bg-brand" : "bg-line"
             }`}
           />
         ))}
@@ -226,11 +226,11 @@ export function RequestFunnel() {
               type="checkbox"
               checked={data.privacy}
               onChange={(e) => set("privacy", e.target.checked)}
-              className="mt-1 h-4 w-4 accent-[var(--color-brick)]"
+              className="mt-1 h-4 w-4 accent-[var(--color-brand)]"
             />
             <span>
               Ich habe die{" "}
-              <a href="/datenschutz" className="font-semibold text-brick underline-offset-2 hover:underline">
+              <a href="/datenschutz" className="font-semibold text-brand underline-offset-2 hover:underline">
                 Datenschutzerklärung
               </a>{" "}
               gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung
@@ -239,7 +239,7 @@ export function RequestFunnel() {
           </label>
 
           {status === "error" && (
-            <p className="text-sm text-brick-deep">
+            <p className="text-sm text-brand-deep">
               Das hat leider nicht geklappt. Bitte rufen Sie uns an oder
               versuchen Sie es erneut.
             </p>
@@ -266,7 +266,7 @@ export function RequestFunnel() {
             type="button"
             disabled={!stepValid}
             onClick={() => setStep((s) => s + 1)}
-            className="inline-flex items-center gap-2 bg-brick px-6 py-3 font-semibold text-white transition-colors hover:bg-brick-deep disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex items-center gap-2 bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-deep disabled:cursor-not-allowed disabled:opacity-40"
           >
             Weiter <ArrowRight size={16} />
           </button>
@@ -274,7 +274,7 @@ export function RequestFunnel() {
           <button
             type="submit"
             disabled={!stepValid || status === "sending"}
-            className="inline-flex items-center gap-2 bg-brick px-6 py-3 font-semibold text-white transition-colors hover:bg-brick-deep disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex items-center gap-2 bg-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-deep disabled:cursor-not-allowed disabled:opacity-40"
           >
             {status === "sending" ? (
               <>
@@ -293,7 +293,7 @@ export function RequestFunnel() {
 }
 
 const inputClass =
-  "w-full border border-line bg-concrete px-4 py-3 text-anthracite outline-none transition-colors focus:border-brick";
+  "w-full border border-line bg-concrete px-4 py-3 text-anthracite outline-none transition-colors focus:border-brand";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -319,8 +319,8 @@ function Choice({
       onClick={onClick}
       className={`border px-4 py-3 text-left text-sm font-medium transition-colors ${
         active
-          ? "border-brick bg-brick text-white"
-          : "border-line bg-white text-anthracite hover:border-brick"
+          ? "border-brand bg-brand text-white"
+          : "border-line bg-white text-anthracite hover:border-brand"
       }`}
     >
       {children}

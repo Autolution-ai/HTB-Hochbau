@@ -8,8 +8,9 @@
   --color-charcoal: #232127;
   --color-steel: #57555c;
   --color-line: #d8d3cc;
-  --color-brick: #b23a18;
-  --color-brick-deep: #8f2d11;
+  /* Markenfarbe HTB Hochbau (aus dem Original-Logo von htb24.com): kräftiges Blau */
+  --color-brand: #0056ad;
+  --color-brand-deep: #00427f;
 
   --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -33,7 +34,7 @@ body {
 
 /* Fokus-Sichtbarkeit für Tastaturnutzer (Barrierefreiheit) */
 :focus-visible {
-  outline: 2px solid var(--color-brick);
+  outline: 2px solid var(--color-brand);
   outline-offset: 2px;
 }
 

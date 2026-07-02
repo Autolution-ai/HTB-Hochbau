@@ -26,7 +26,7 @@ export function UseCase() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="section-label text-brick">Use Case · Wanddurchbruch</p>
+          <p className="section-label text-brand">Use Case · Wanddurchbruch</p>
           <h2 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">
             Mehr Raum schaffen durch statische Wanddurchbrüche
           </h2>
@@ -40,7 +40,7 @@ export function UseCase() {
           <ul className="mt-7 space-y-3">
             {points.map((point) => (
               <li key={point} className="flex items-start gap-3">
-                <span className="mt-0.5 grid h-6 w-6 flex-shrink-0 place-items-center bg-brick">
+                <span className="mt-0.5 grid h-6 w-6 flex-shrink-0 place-items-center bg-brand">
                   <Check size={15} className="text-white" />
                 </span>
                 <span className="text-white/85">{point}</span>
@@ -50,7 +50,7 @@ export function UseCase() {
 
           <a
             href="#kontakt"
-            className="mt-8 inline-flex bg-brick px-7 py-4 font-semibold text-white transition-colors hover:bg-brick-deep"
+            className="mt-8 inline-flex bg-brand px-7 py-4 font-semibold text-white transition-colors hover:bg-brand-deep"
           >
             Wanddurchbruch anfragen
           </a>

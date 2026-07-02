@@ -40,7 +40,7 @@ export function References() {
         <Reveal delay={0.1}>
           <p className="mt-8 text-sm text-steel">
             Sie möchten eine ausführliche Referenzliste?{" "}
-            <a href="#kontakt" className="font-semibold text-brick underline-offset-4 hover:underline">
+            <a href="#kontakt" className="font-semibold text-brand underline-offset-4 hover:underline">
               Fragen Sie sie einfach an.
             </a>{" "}
             Oder laden Sie unsere{" "}
@@ -48,7 +48,7 @@ export function References() {
               href={company.portfolioPdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-brick underline-offset-4 hover:underline"
+              className="font-semibold text-brand underline-offset-4 hover:underline"
             >
               Leistungsübersicht als PDF
             </a>{" "}

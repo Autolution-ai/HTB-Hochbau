@@ -15,7 +15,7 @@ export function SectionHeading({
 }) {
   return (
     <Reveal className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <p className={`section-label ${light ? "text-brick" : "text-brick"}`}>{label}</p>
+      <p className={`section-label ${light ? "text-brand" : "text-brand"}`}>{label}</p>
       <h2
         className={`mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl ${
           light ? "text-white" : "text-anthracite"

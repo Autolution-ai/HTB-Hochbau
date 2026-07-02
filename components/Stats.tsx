@@ -41,7 +41,7 @@ export function Stats() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center md:text-left">
-              <div className="font-display text-4xl font-extrabold text-brick md:text-5xl">
+              <div className="font-display text-4xl font-extrabold text-brand md:text-5xl">
                 <CountUp to={s.to} suffix={s.suffix} />
               </div>
               <div className="mt-1 text-sm text-white/70">{s.label}</div>

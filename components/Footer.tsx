@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { Facebook } from "lucide-react";
-import { company } from "@/lib/site";
+import { company, logo } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -7,11 +8,14 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center bg-brick font-display text-lg font-extrabold text-white">
-                HTB
-              </span>
-              <span className="font-display text-lg font-bold text-white">Hochbau GmbH</span>
+            <div className="flex items-center">
+              <Image
+                src={logo}
+                alt="HTB Hochbau GmbH Logo"
+                width={56}
+                height={56}
+                className="h-14 w-14 object-contain"
+              />
             </div>
             <p className="mt-4 text-sm leading-relaxed">
               {company.tagline}. Familiengeführtes Bauunternehmen im Raum{" "}

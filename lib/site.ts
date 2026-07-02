@@ -43,6 +43,9 @@ export const certifications = [
 
 const IMG = "https://htb24.com/wp-content/uploads";
 
+// Original-Logo der HTB Hochbau GmbH (blaues Quadrat, weißer Schriftzug)
+export const logo = `${IMG}/2021/02/cropped-LOGO-400x400-1.jpg`;
+
 export const heroImage = `${IMG}/2021/05/WD_13.jpg`;
 
 export const services = [

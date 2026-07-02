@@ -31,7 +31,7 @@ export function WhyHTB() {
     <section className="bg-anthracite py-24 text-white">
       <div className="mx-auto grid max-w-6xl gap-14 px-5 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
-          <p className="section-label text-brick">Warum HTB Hochbau</p>
+          <p className="section-label text-brand">Warum HTB Hochbau</p>
           <h2 className="mt-3 max-w-xl font-display text-3xl font-bold leading-tight sm:text-4xl">
             Ein Baubetrieb, den Sie beim Wort nehmen können
           </h2>
@@ -40,7 +40,7 @@ export function WhyHTB() {
             {reasons.map((reason, i) => (
               <Reveal key={reason.title} delay={i * 0.06}>
                 <div>
-                  <reason.icon size={26} className="text-brick" />
+                  <reason.icon size={26} className="text-brand" />
                   <h3 className="mt-4 font-display text-lg font-bold">{reason.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/70">
                     {reason.text}
@@ -67,7 +67,7 @@ export function WhyHTB() {
             <ul className="mt-4 space-y-3 text-sm">
               {contacts.map((c) => (
                 <li key={c.role}>
-                  <span className="text-brick">{c.role}</span>
+                  <span className="text-brand">{c.role}</span>
                   <br />
                   <span className="text-white/85">{c.people.join(" · ")}</span>
                 </li>
@@ -80,7 +80,7 @@ export function WhyHTB() {
             <ul className="mt-4 space-y-2 text-sm text-white/75">
               {certifications.map((cert) => (
                 <li key={cert} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-brick" />
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 bg-brand" />
                   {cert}
                 </li>
               ))}
