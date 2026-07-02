@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
-import { company, navLinks } from "@/lib/site";
+import { company, logo, navLinks } from "@/lib/site";
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,13 +25,15 @@ export function Navigation() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-        <a href="#top" className="flex items-center gap-3" aria-label="HTB Hochbau GmbH, zum Seitenanfang">
-          <span className="grid h-10 w-10 place-items-center bg-brick font-display text-lg font-extrabold text-white">
-            HTB
-          </span>
-          <span className="font-display text-lg font-bold leading-tight text-white">
-            Hochbau <span className="text-white/60">GmbH</span>
-          </span>
+        <a href="#top" className="flex items-center" aria-label="HTB Hochbau GmbH, zum Seitenanfang">
+          <Image
+            src={logo}
+            alt="HTB Hochbau GmbH Logo"
+            width={56}
+            height={56}
+            priority
+            className="h-14 w-14 object-contain"
+          />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Hauptnavigation">
@@ -45,7 +48,7 @@ export function Navigation() {
           ))}
           <a
             href="#kontakt"
-            className="bg-brick px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brick-deep"
+            className="bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-deep"
           >
             Angebot anfragen
           </a>
@@ -84,7 +87,7 @@ export function Navigation() {
             <a
               href="#kontakt"
               onClick={() => setOpen(false)}
-              className="bg-brick px-5 py-3 text-center font-semibold text-white"
+              className="bg-brand px-5 py-3 text-center font-semibold text-white"
             >
               Angebot anfragen
             </a>

@@ -14,7 +14,7 @@ export function Contact() {
     <section id="kontakt" className="bg-charcoal py-24 text-white">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
         <div>
-          <p className="section-label text-brick">Kontakt</p>
+          <p className="section-label text-brand">Kontakt</p>
           <h2 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">
             Projekt beschreiben, Angebot erhalten
           </h2>
@@ -26,7 +26,7 @@ export function Contact() {
           <ol className="mt-10 space-y-6">
             {steps.map((step) => (
               <Reveal as="li" key={step.n} className="flex gap-4">
-                <span className="grid h-10 w-10 flex-shrink-0 place-items-center bg-brick font-display text-lg font-bold">
+                <span className="grid h-10 w-10 flex-shrink-0 place-items-center bg-brand font-display text-lg font-bold">
                   {step.n}
                 </span>
                 <div>
@@ -39,13 +39,13 @@ export function Contact() {
 
           <div className="mt-10 space-y-3 border-t border-white/10 pt-8 text-sm">
             <a href={`tel:${company.phone}`} className="flex items-center gap-3 text-white/85 hover:text-white">
-              <Phone size={18} className="text-brick" /> {company.phoneDisplay}
+              <Phone size={18} className="text-brand" /> {company.phoneDisplay}
             </a>
             <a href={`mailto:${company.email}`} className="flex items-center gap-3 text-white/85 hover:text-white">
-              <Mail size={18} className="text-brick" /> {company.email}
+              <Mail size={18} className="text-brand" /> {company.email}
             </a>
             <p className="flex items-center gap-3 text-white/85">
-              <MapPin size={18} className="text-brick" />
+              <MapPin size={18} className="text-brand" />
               {company.street}, {company.postalCode} {company.city}
             </p>
           </div>

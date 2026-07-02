@@ -40,7 +40,7 @@ export function Audiences() {
             <Reveal key={group.title} delay={i * 0.06}>
               <div className="flex h-full flex-col border border-line bg-white p-7">
                 <span className="grid h-12 w-12 place-items-center bg-anthracite">
-                  <group.icon size={22} className="text-brick" />
+                  <group.icon size={22} className="text-brand" />
                 </span>
                 <h3 className="mt-5 font-display text-lg font-bold text-anthracite">
                   {group.title}
