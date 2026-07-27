@@ -26,7 +26,7 @@ export function UseCase() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="section-label text-brand">Use Case · Wanddurchbruch</p>
+          <p className="section-label text-brand-light">Use Case · Wanddurchbruch</p>
           <h2 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">
             Mehr Raum schaffen durch statische Wanddurchbrüche
           </h2>

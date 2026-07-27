@@ -11,6 +11,8 @@
   /* Markenfarbe HTB Hochbau (aus dem Original-Logo von htb24.com): kräftiges Blau */
   --color-brand: #0056ad;
   --color-brand-deep: #00427f;
+  /* Hellere Variante für ausreichenden Kontrast auf dunklen Flächen (WCAG AA) */
+  --color-brand-light: #6ba7de;
 
   --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;

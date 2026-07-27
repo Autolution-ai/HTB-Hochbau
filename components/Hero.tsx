@@ -18,7 +18,7 @@ export function Hero() {
 
       <div className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-32 md:pb-24">
         <HeroIntro>
-          <p className="section-label text-brand">
+          <p className="section-label text-brand-light">
             Hochbau im Bestand · {company.region}
           </p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl md:text-6xl">

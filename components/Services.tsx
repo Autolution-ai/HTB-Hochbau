@@ -61,7 +61,7 @@ export function Services() {
                   {service.lead && (
                     <a
                       href="#wanddurchbruch"
-                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand"
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-light"
                     >
                       So läuft ein Wanddurchbruch <ArrowUpRight size={16} />
                     </a>
