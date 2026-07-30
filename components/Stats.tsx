@@ -29,7 +29,8 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
 
 const stats = [
   { to: company.yearsInBusiness, suffix: "", label: "Jahre am Markt" },
-  { to: company.employees, suffix: "", label: "eigene Facharbeiter" },
+  { to: 1000, suffix: "+", label: "abgeschlossene Projekte" },
+  { to: company.employees, suffix: "", label: "eigene Facharbeiter, keine Subunternehmer" },
   { to: certifications.length, suffix: "", label: "Herstellerzulassungen" },
 ];
 
@@ -37,7 +38,7 @@ export function Stats() {
   return (
     <section className="border-y border-line bg-charcoal">
       <div className="mx-auto max-w-6xl px-5 py-12">
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center md:text-left">
               <div className="font-display text-4xl font-extrabold text-brand-light md:text-5xl">

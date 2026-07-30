@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { referenceGallery, company } from "@/lib/site";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
+import { Slideshow } from "./Slideshow";
 
 export function References() {
   return (
@@ -13,29 +13,15 @@ export function References() {
           intro="Ein Ausschnitt aus unseren Projekten, von einzelnen Wandöffnungen bis zu komplexen Sanierungen. Keine Stockfotos, nur eigene Arbeiten."
         />
 
-        <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4">
-          {referenceGallery.map((img, i) => (
-            <Reveal
-              key={img.src}
-              delay={(i % 4) * 0.05}
-              className={i === 0 ? "col-span-2 row-span-2" : ""}
-            >
-              <div
-                className={`relative w-full overflow-hidden ${
-                  i === 0 ? "aspect-square md:aspect-auto md:h-full" : "aspect-square"
-                }`}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        {/* Große Projekt-Diashow */}
+        <Reveal className="mt-12">
+          <Slideshow
+            slides={referenceGallery}
+            interval={4500}
+            className="aspect-[16/9] w-full sm:aspect-[21/9]"
+            imageSizes="(max-width: 1152px) 100vw, 1152px"
+          />
+        </Reveal>
 
         <Reveal delay={0.1}>
           <p className="mt-8 text-sm text-steel">

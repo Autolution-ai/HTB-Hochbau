@@ -15,11 +15,16 @@ export async function POST(request: Request) {
   }
 
   // Pflichtfelder prüfen.
-  const required = ["service", "customerType", "name", "phone", "email"] as const;
+  const required = ["customerType", "name", "phone", "email"] as const;
   for (const field of required) {
     if (typeof body[field] !== "string" || (body[field] as string).trim() === "") {
       return NextResponse.json({ ok: false, error: "missing_fields" }, { status: 422 });
     }
+  }
+
+  // Mindestens eine Leistung (Mehrfachauswahl) muss gewählt sein.
+  if (!Array.isArray(body.services) || body.services.length === 0) {
+    return NextResponse.json({ ok: false, error: "missing_services" }, { status: 422 });
   }
 
   const email = String(body.email);
@@ -32,10 +37,12 @@ export async function POST(request: Request) {
   // über Umgebungsvariablen (.env.local), niemals im Repository.
   // Beispiel: await sendMail({ to: "info@htb24.de", ... })
   console.info("[Anfrage eingegangen]", {
-    service: body.service,
+    categories: body.categories,
+    services: body.services,
     customerType: body.customerType,
     location: body.location,
     timeframe: body.timeframe,
+    projectSize: body.projectSize || "keine Angabe",
   });
 
   return NextResponse.json({ ok: true });
