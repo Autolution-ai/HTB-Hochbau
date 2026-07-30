@@ -2,15 +2,16 @@
 
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Loader2, Send } from "lucide-react";
-import { serviceOptions } from "@/lib/site";
+import { funnelExtraOption, serviceCategories } from "@/lib/site";
 
 type Data = {
-  service: string;
+  categories: string[]; // gewählte Oberbegriffe
+  services: string[]; // gewählte Detail-Leistungen (Mehrfachauswahl)
   customerType: string;
   location: string;
   hasPlans: string;
   timeframe: string;
-  budget: string;
+  projectSize: string; // optional: Klein / Mittel / Groß / Noch unklar
   message: string;
   name: string;
   phone: string;
@@ -20,12 +21,13 @@ type Data = {
 };
 
 const initial: Data = {
-  service: "",
+  categories: [],
+  services: [],
   customerType: "",
   location: "",
   hasPlans: "",
   timeframe: "",
-  budget: "",
+  projectSize: "",
   message: "",
   name: "",
   phone: "",
@@ -41,13 +43,7 @@ const timeframes = [
   "Erst einmal nur Information",
 ];
 
-const budgets = [
-  "Noch unklar",
-  "bis 5.000 €",
-  "5.000 – 25.000 €",
-  "25.000 – 100.000 €",
-  "über 100.000 €",
-];
+const projectSizes = ["Klein", "Mittel", "Groß", "Noch unklar"];
 
 export function RequestFunnel() {
   const [step, setStep] = useState(0);
@@ -57,9 +53,32 @@ export function RequestFunnel() {
   const set = <K extends keyof Data>(key: K, value: Data[K]) =>
     setData((d) => ({ ...d, [key]: value }));
 
+  const toggle = (key: "categories" | "services", value: string) =>
+    setData((d) => {
+      const list = d[key];
+      const next = list.includes(value)
+        ? list.filter((v) => v !== value)
+        : [...list, value];
+      if (key === "categories") {
+        // Beim Abwählen eines Oberbegriffs dessen Leistungen mit entfernen
+        const allowed = new Set(
+          serviceCategories
+            .filter((c) => next.includes(c.title))
+            .flatMap((c) => c.services.map((s) => s.title))
+            .concat(funnelExtraOption)
+        );
+        return { ...d, categories: next, services: d.services.filter((s) => allowed.has(s)) };
+      }
+      return { ...d, [key]: next };
+    });
+
+  const activeCategories = serviceCategories.filter((c) =>
+    data.categories.includes(c.title)
+  );
+
   const stepValid =
     step === 0
-      ? data.service && data.customerType
+      ? data.categories.length > 0 && data.services.length > 0 && data.customerType
       : step === 1
         ? data.location && data.timeframe
         : data.name && data.phone && data.email && data.privacy;
@@ -117,21 +136,58 @@ export function RequestFunnel() {
 
       {step === 0 && (
         <div className="space-y-6">
-          <Field label="Welche Leistung benötigen Sie?">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {serviceOptions.map((opt) => (
+          <Field label="Worum geht es? (Mehrfachauswahl möglich)">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+              {serviceCategories.map((cat) => (
                 <Choice
-                  key={opt}
-                  active={data.service === opt}
-                  onClick={() => set("service", opt)}
+                  key={cat.key}
+                  active={data.categories.includes(cat.title)}
+                  onClick={() => toggle("categories", cat.title)}
+                  multi
                 >
-                  {opt}
+                  {cat.title}
                 </Choice>
               ))}
             </div>
           </Field>
+
+          {activeCategories.length > 0 && (
+            <Field label="Welche Leistungen benötigen Sie? (Mehrfachauswahl möglich)">
+              <div className="space-y-4">
+                {activeCategories.map((cat) => (
+                  <div key={cat.key}>
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-steel">
+                      {cat.title}
+                    </p>
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                      {cat.services.map((service) => (
+                        <Choice
+                          key={service.key}
+                          active={data.services.includes(service.title)}
+                          onClick={() => toggle("services", service.title)}
+                          multi
+                        >
+                          {service.title}
+                        </Choice>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  <Choice
+                    active={data.services.includes(funnelExtraOption)}
+                    onClick={() => toggle("services", funnelExtraOption)}
+                    multi
+                  >
+                    {funnelExtraOption}
+                  </Choice>
+                </div>
+              </div>
+            </Field>
+          )}
+
           <Field label="Sind Sie Privat- oder Gewerbekunde?">
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {["Gewerbekunde / Hausverwaltung", "Privatkunde"].map((opt) => (
                 <Choice
                   key={opt}
@@ -175,10 +231,14 @@ export function RequestFunnel() {
               ))}
             </div>
           </Field>
-          <Field label="Geschätzter Projektumfang">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {budgets.map((opt) => (
-                <Choice key={opt} active={data.budget === opt} onClick={() => set("budget", opt)}>
+          <Field label="Wie schätzen Sie den Projektumfang ein? (optional)">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {projectSizes.map((opt) => (
+                <Choice
+                  key={opt}
+                  active={data.projectSize === opt}
+                  onClick={() => set("projectSize", data.projectSize === opt ? "" : opt)}
+                >
                   {opt}
                 </Choice>
               ))}
@@ -308,21 +368,33 @@ function Choice({
   active,
   onClick,
   children,
+  multi = false,
 }: {
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
+  multi?: boolean;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`border px-4 py-3 text-left text-sm font-medium transition-colors ${
+      aria-pressed={active}
+      className={`flex items-center gap-2 border px-4 py-3 text-left text-sm font-medium transition-colors ${
         active
           ? "border-brand bg-brand text-white"
           : "border-line bg-white text-anthracite hover:border-brand"
       }`}
     >
+      {multi && (
+        <span
+          className={`grid h-4 w-4 flex-shrink-0 place-items-center border ${
+            active ? "border-white bg-white" : "border-line"
+          }`}
+        >
+          {active && <Check size={12} className="text-brand" />}
+        </span>
+      )}
       {children}
     </button>
   );

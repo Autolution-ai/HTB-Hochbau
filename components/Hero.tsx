@@ -1,20 +1,20 @@
-import Image from "next/image";
 import { ArrowRight, Phone } from "lucide-react";
-import { company, heroImage } from "@/lib/site";
+import { company, heroSlides } from "@/lib/site";
 import { HeroIntro } from "./HeroIntro";
+import { Slideshow } from "./Slideshow";
 
 export function Hero() {
   return (
     <section id="top" className="relative flex min-h-[92vh] items-end overflow-hidden">
-      <Image
-        src={heroImage}
-        alt="Wanddurchbruch mit Stahlträger-Abfangung auf einer Baustelle von HTB Hochbau in Berlin"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
+      <Slideshow
+        slides={heroSlides}
+        interval={6000}
+        className="absolute inset-0"
+        imageSizes="100vw"
+        showControls={false}
+        priorityFirst
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-anthracite via-anthracite/80 to-anthracite/30" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-anthracite via-anthracite/80 to-anthracite/30" />
 
       <div className="relative mx-auto w-full max-w-6xl px-5 pb-16 pt-32 md:pb-24">
         <HeroIntro>
@@ -26,8 +26,9 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
             Statische Wanddurchbrüche, Mauerarbeiten und Sanierung im Bestand.
-            Familienbetrieb aus Berlin, eigene Mannschaft, ein Ansprechpartner
-            vom ersten Termin bis zur Übergabe.
+            Familienbetrieb aus Berlin mit eigener Mannschaft statt
+            Subunternehmern, ein Ansprechpartner vom ersten Termin bis zur
+            Übergabe.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
